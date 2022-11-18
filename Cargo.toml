@@ -10,14 +10,27 @@ license = "MIT"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-maingate = { git = "https://github.com/privacy-scaling-explorations/halo2wrong", version = "0.1.0", rev = "ed953b054b906b64787dc9a8cbefc0db4be9f8fa"}
-halo2wrong =  { git = "https://github.com/privacy-scaling-explorations/halo2wrong", version = "0.1.0", rev = "ed953b054b906b64787dc9a8cbefc0db4be9f8fa"}
-halo2_sha256 = { git = "https://github.com/SoraSuegami/halo2_sha256.git", version = "0.1.0"}
+# maingate = { git = "https://github.com/privacy-scaling-explorations/halo2wrong", version = "0.1.0", rev = "ed953b054b906b64787dc9a8cbefc0db4be9f8fa"}
+maingate = { version = "0.1.0", path = "../privacy-scaling-explorations/halo2wrong/maingate" }
+# halo2wrong =  { git = "https://github.com/privacy-scaling-explorations/halo2wrong", version = "0.1.0", rev = "ed953b054b906b64787dc9a8cbefc0db4be9f8fa"}
+halo2wrong = { version = "0.1.0", path = "../privacy-scaling-explorations/halo2wrong/halo2wrong" }
+# halo2_sha256 = { git = "https://github.com/SoraSuegami/halo2_sha256.git", version = "0.1.0"}
+halo2_sha256 = { version = "0.1.0", path = "../privacy-scaling-explorations/halo2_sha256" }
+
+
+
 num-bigint = { version = "0.4", features = ["rand"] }
-zkevm-circuits = { git = "https://github.com/SoraSuegami/zkevm-circuits.git", version = "0.1.0"}
-eth-types = { git = "https://github.com/SoraSuegami/zkevm-circuits.git", version = "0.1.0"}
+# zkevm-circuits = { git = "https://github.com/SoraSuegami/zkevm-circuits.git", version = "0.1.0"}
+zkevm-circuits = { version = "0.1.0", path = "../zkevm-circuits/zkevm-circuits" }
+# eth-types = { git = "https://github.com/SoraSuegami/zkevm-circuits.git", version = "0.1.0"}
+eth-types = { version = "0.1.0", path = "../zkevm-circuits/eth-types" }
 sha2 = "0.10.6"
 
 [dev-dependencies]
 rand = "0.8.5"
 rsa = "0.6.1"
+
+[features]
+# default = ["console_error_panic_hook"]
+# default = ["console_error_panic_hook", "wee_alloc"]
+wasm = ["zkevm-circuits/wasm"]
